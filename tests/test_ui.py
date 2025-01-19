@@ -1,13 +1,21 @@
 import pytest
 import allure
-from selenium import webdriver
 from pages.main_page import MainPage
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from config import main_url, cookies
 
 
 @pytest.fixture
 def driver():
+    chrome_options = Options()
+    chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+    chrome_options.add_argument(
+        "user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36")
+    chrome_options.add_argument("--headless")
+
     driver = webdriver.Chrome()
+
     yield driver
     driver.quit()
 
