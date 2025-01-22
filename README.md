@@ -1,1 +1,2 @@
-# Пример работы
+- Запуск тестов UI по команде: `pytest -v --alluredir=allure-results test\test_ui.py`
+- Генерация отчета по команде: `allure serve allure-results`
